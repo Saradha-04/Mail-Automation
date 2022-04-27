@@ -1,0 +1,32 @@
+ <!DOCTYPE html>
+<html>
+<body>
+
+<h2>Send e-mail </h2>
+<form action="mailto: " method="post" enctype="text/plain">
+
+<br>
+Message
+<input type="textfield" name="Message" size="50"><br>
+<br>
+<input type="reset" value="Reset">
+<button onclick="send_mail"> Send</button>
+
+<script>
+def  send_mail(subject,msg) {
+
+     try:
+        server = smtplib.SMTP('smtp.gmail.com:587')
+        server.ehlo()
+        server.starttls()
+        server.login('Mailid', 'Password')
+        message = "Subject: {}\n\n{}".format(subject, msg)
+        server.sendmail(frommailid, to, message)
+        server.quit()
+        console.log("Success: Email sent!!!");
+    except:
+        console.log("Email failed to send,");
+</script>
+
+</body>
+</html>
